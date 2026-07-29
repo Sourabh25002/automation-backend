@@ -1,8 +1,10 @@
 import pg from 'pg';
 const { Pool } = pg;
+import { config } from '../utils/config.js';
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: config.DATABASE_URL,
+    connectionTimeoutMillis: 10000
 });
 
 export const connectDB = async () => {

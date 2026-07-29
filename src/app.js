@@ -17,7 +17,16 @@ app.use(cookieParser());
 app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true, limit: '2mb' }));
 
-app.use('/', v1);
+app.get('/', (req, res) => {
+    const data = "Hello World!";
+
+    res.status(200).json({
+        success: true,
+        message: data
+    });
+});
+
+
 app.use('/api/v1', v1);
 
 export { app }; 
