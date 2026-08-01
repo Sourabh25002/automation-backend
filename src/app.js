@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import v1 from './routes/v1.routes.js';
+import { errorHandler } from './middlewares/error.middleware.js';
 
 const app = express();
 
@@ -28,5 +29,8 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/v1', v1);
+
+// Global Error Handling Middleware
+app.use(errorHandler);
 
 export { app }; 
