@@ -1,6 +1,7 @@
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import { config } from './utils/config.js';
 import morgan from 'morgan';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -11,7 +12,7 @@ const app = express();
 
 // middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: config.CORS_ORIGIN || false, credentials: true }));
 app.use(morgan('dev'));
 app.use(compression());
 app.use(cookieParser());

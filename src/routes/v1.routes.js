@@ -7,7 +7,8 @@ const router = express.Router();
 
 router.post('/auth/signup', validate(signUpSchema), authController.signUp);
 router.post('/auth/login', validate(loginSchema), authController.login);
-// router.post('/auth/logout', authController.Logout);
+router.post('/auth/refresh', authController.refresh);
+router.post('/auth/logout', authController.logout);
 // router.post('/auth/forget-password', authController.ForgetPassword);
 
 export default router;
